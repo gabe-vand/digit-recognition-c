@@ -10,7 +10,13 @@
 
 #define DRAW_RADIUS 11
 
-int main() {
+int main(int argc, char* argv[]) {
+    // Initialize SDL
+    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+        printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
+        return 1;
+    }
+
     // create grid representation of our view for ML processing
     int **grid = (int **)malloc(WINDOW_Y * sizeof(int *));
     for (int i = 0; i < WINDOW_Y; i++) {
